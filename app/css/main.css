@@ -343,6 +343,52 @@ a {
 
 /*==========  Desktop First Method  ==========*/
 /* Large Devices, Wide Screens */
+@media only screen and (max-width: 1440px) {
+  .content {
+    height: 450px; }
+  .content-wrap {
+    height: 100%;
+    margin-top: -450px; }
+  .sidebar {
+    width: -webkit-calc((100% - 840px)/2);
+    width: calc((100% - 840px)/2); }
+  .r-carousel-wrap .gallery-item img {
+    max-height: 450px; }
+  .soc {
+    margin-top: 20px;
+    margin-left: 50px; }
+  .lang {
+    bottom: 20px; }
+    .lang_item {
+      margin-bottom: 10px; }
+  .logo {
+    bottom: 20px; }
+    .logo img {
+      width: 60px;
+      height: 60px; }
+  .block_contact {
+    background-size: 100%;
+    background-position: right bottom; }
+  .about-info {
+    width: 450px; }
+  .project-item {
+    height: 214px; }
+  .pagination li {
+    margin-top: 5px; }
+  .arrow {
+    height: 80px;
+    margin-bottom: 75px; }
+    .arrow li:first-child {
+      margin-bottom: 40px; }
+    .arrow-back {
+      margin-bottom: 40px; }
+  .arrow-gallery {
+    height: 80px;
+    margin-bottom: 75px; }
+    .arrow-gallery li:first-child {
+      margin-bottom: 40px; } }
+
+/* Large Devices, Wide Screens */
 /* Medium Devices, Desktops */
 /* Small Devices, Tablets */
 /* Extra Small Devices, Phones */

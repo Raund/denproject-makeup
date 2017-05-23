@@ -1,14 +1,23 @@
 $(function(){
 
-/***********height screen*************/
-    $('.header, .footer').css({height : ($( window ).height() - 630)/2 + 'px'});
-    $('.content').css({'top' : ($( window ).height() - 630)/2 + 'px'});
-    $('.sidebar_right_wrap').css({'bottom' : ($( window ).height() - 630)/2 + 'px'});
+/*
+    if($( window ).width() <= 1440){
+        $('.header, .footer').css({height : ($( window ).height() - 630)/2 + 'px'});
+        $('.content').css({'top' : ($( window ).height() - 630)/2 + 'px'});
+        $('.sidebar_right_wrap').css({'bottom' : ($( window ).height() - 630)/2 + 'px'});
+        $('nav').css({width : $( window ).height() + 'px'});
+    }
+*/
+    var marTop = +($('.content').css('height').slice(0,-2));
+
+    /***********height screen*************/
+    $('.header, .footer').css({height : ($( window ).height() - marTop)/2 + 'px'});
+    $('.content').css({'top' : ($( window ).height() - marTop)/2 + 'px'});
+    $('.sidebar_right_wrap').css({'bottom' : ($( window ).height() - marTop)/2 + 'px'});
     $('nav').css({width : $( window ).height() + 'px'});
 /***********END height screen*************/
 
 /***********Navigation menu and click on logo*************/
-    var marTop = 630;
     $('.nav a, .logo').on("click", function (e) {
         $('.project-item').show();
         $('.r-carousel-wrap').css({'opacity':0,'z-index':-1});  // hide all gallery
