@@ -1,0 +1,371 @@
+@import "bourbon/bourbon";
+/*-------------main----------------*/
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html{
+  height: 100%;
+  background: url("../img/frontend/body_bg.jpg") center no-repeat;
+  background-size: cover;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+a:hover{
+  text-decoration: none;
+  cursor: pointer;
+}
+ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;
+}
+.right{
+  float: right;
+}
+.left{
+  float: left;
+}
+.center{
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {clear: both;}
+
+body{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: rgba(255,255,255,0.5);
+  color: #262626;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 15px;
+  line-height: initial;
+}
+a{
+  padding: 5px 5px 2px;
+  text-transform: uppercase;
+  &.active{
+    background-color: #262626;
+    color: #fff;
+  }
+}
+.wrapper{
+  position: relative;
+  width: 840px;
+  height: inherit;
+  margin: 0 auto;
+}
+.header, .footer{
+  position: fixed;
+  width: 100%;
+}
+.header{
+  top: 0;
+  left: 0;
+}
+.footer{
+  bottom: 0;
+  left: 0;
+}
+.lang{
+  display: inline-block;
+  position: absolute;
+  bottom: 40px;
+  left: 50px;
+  &_item{
+    margin-bottom: 15px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+}
+.logo{
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 40px;
+  padding: 0;
+  &:hover, &.active{
+    background: inherit;
+  }
+}
+.content{
+  position: fixed;
+  width: 840px;
+  height: 630px;
+  left: 50%;
+  margin-left: -420px;
+  overflow: hidden;
+}
+.sidebar{
+  position: fixed;
+  width: calc((100% - 840px)/2);
+  height: 100%;
+  &_left{
+    top: 0;
+    left: 0;
+  }
+  &_right{
+    top: 0;
+    right: 0;
+  }
+}
+.nav{
+  position: absolute;
+  top: 50%;
+  right: 70px;
+  height: 400px;
+  margin-top: -200px;
+  li{
+    margin-bottom: 50px;
+  }
+  &_item{
+    display: block;
+    transition: all .5s ease;
+    &:hover img,
+    &.active img{
+      filter: invert(1) brightness(140%);
+      transition: all .5s ease;
+    }
+    &:hover{
+      background-color: #262626;
+      color: #fff;
+      transition: all .5s ease;
+    }
+    &.active{
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}
+.soc {
+  margin-top: 45px;
+  margin-left: 50px;
+  &_item {
+    display: inline-block;
+    margin-right: 40px;
+    transition: all .5s ease;
+    a {
+      text-transform: none;
+      padding: 5px;
+      &:hover{
+        background-color: #262626;
+        color: #fff;
+        transition: all .5s ease;
+      }
+    }
+  }
+}
+.sidebar_right_wrap{
+  position: absolute;
+  width: 50px;
+  padding: 0 0 10px 10px;
+  text-align: right;
+}
+.arrow{
+  position: relative;
+  height: 110px;
+  margin-bottom: 150px;
+  li{
+    position: absolute;
+    width: 40px;
+    height: 20px;
+  }
+  li:hover{
+    cursor: pointer;
+  }
+  li:first-child{
+    margin-bottom: 70px;
+  }
+  &-up{
+    top: 0;
+  }
+  &-down{
+    bottom: 0;
+  }
+  &-back{
+    display: none;
+    margin-bottom: 70px;
+    cursor: pointer;
+  }
+  &-back.active{
+    display: block;
+  }
+}
+.arrow-gallery{
+  display: none;
+  position: relative;
+  height: 110px;
+  margin-bottom: 150px;
+  li{
+    position: absolute;
+    width: 40px;
+    height: 20px;
+  }
+  li:hover{
+    cursor: pointer;
+  }
+  li:first-child{
+    margin-bottom: 70px;
+  }
+  &-up{
+    top: 0;
+  }
+  &-down{
+    bottom: 0;
+  }
+  &.active{
+    display: block;
+  }
+}
+
+.pagination{
+  li{
+    margin-top: 10px;
+  }
+}
+.pag_item{
+  display: block;
+  height: 23px;
+  padding: 0;
+  pointer-events: none;
+  cursor: default;
+  &.active{
+    background-color: inherit;
+    color: #000000;
+    .page-num{
+      display: inline;
+      padding-left: 7px;
+      font-size: 18px;
+      font-weight: bold;
+      opacity:1;
+      transition: all .5s ease;
+    }
+  }
+}
+.page-num{
+  display: none;
+  opacity:0;
+  transition: all .5s ease;
+}
+.block-content{
+  width: 100%;
+  height: 100%;
+}
+.block_about{
+  display: table;
+  background: url("../img/frontend/about_bg.png") 50px top no-repeat;
+}
+.about_desc{
+  display: table-cell;
+  vertical-align: middle;
+}
+.about-info{
+  width: 550px;
+  margin: 0 auto;
+}
+.block_project{
+  position: relative;
+  width: 100%;
+  background: url("../img/frontend/project_bg.png") 75% 35% no-repeat;
+}
+.block_subject{
+  width: 100%;
+  background: url("../img/frontend/subject_bg.png") 75% 60% no-repeat;
+}
+.project-item{
+  display: table;
+  float: left;
+  width: 32.5%;
+  height: 200px;
+  margin-right: 1.25%;
+  margin-bottom: 1.25%;
+  background-size: cover;
+  background-position: center;
+  &:nth-child(3n){
+    margin-right: 0;
+  }
+  &_name{
+    position: relative;
+    width: 33%;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 50px;
+    vertical-align: bottom;
+    background-color: rgba(255,255,255,0.9);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0;
+    transition: all .5s ease;
+    &-text{
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    .project-item_name {
+      opacity: 1;
+      transition: all .5s ease;
+    }
+  }
+}
+
+.r-carousel-wrap{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  z-index: -1;
+  .gallery-item{
+    width: 840px;
+    height: auto;
+    img{
+      width: initial;
+      max-width: 100%;
+      max-height: 630px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.block_contact{
+  display: table;
+  background: url("../img/frontend/contact_bg.png") 60px top no-repeat;
+}
+.contact_desc{
+  display: table-cell;
+  vertical-align: middle;
+}
+.contact-info{
+  width: 300px;
+  margin: 0 auto;
+}
+.block2{
+  background: yellow;
+}
+.block3{
+  background: pink;
+}
+.content-wrap{
+  height: 100%;
+  margin-top: -630px;
+}
+//ALWAYS END
+@import "media.scss";

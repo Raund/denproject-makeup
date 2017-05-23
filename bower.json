@@ -1,0 +1,27 @@
+{
+  "name": "evroblok",
+  "description": "Evroblok site",
+  "main": "index.js",
+  "authors": [
+    "Raund"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "*",
+    "jquery": "2.*"
+  },
+  "devDependencies": {
+    "bourbon": "^4.3.3",
+    "font-awesome": "^4.7.0",
+    "owl-carousel": "^1.3.2",
+    "bootstrap": "^3.3.7"
+  }
+}
