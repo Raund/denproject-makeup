@@ -1,6 +1,7 @@
 $(function(){
 
     var marTop = +($('.content').css('height').slice(0,-2));
+    var projectId;
 
     function scrollUp(pageOld) {
         var pageUpNum = +pageOld - 1;
@@ -15,6 +16,8 @@ $(function(){
         });
         $('body').find('[data-page-num=' + pageUpNum + ']').addClass('active');
         $('.content-wrap').css({'margin-top' : - marTop * (pageUpNum - 1)});
+        $('.r-carousel-wrap').css({'opacity':0,'z-index':-1});
+        $('.project-item').show();
     };
     function scrollDown(pageOld) {
         var pageDownNum = +pageOld + 1;
@@ -29,6 +32,8 @@ $(function(){
         $('[data-page-num]').removeClass('active');
         $('body').find('[data-page-num=' + pageDownNum + ']').addClass('active');
         $('.content-wrap').css({'margin-top' : - marTop * (pageDownNum - 1)});
+        $('.r-carousel-wrap').css({'opacity':0,'z-index':-1});
+        $('.project-item').show();
     };
 
     /***********height screen*************/
@@ -69,8 +74,19 @@ $(function(){
         e.preventDefault();
     });
 /***********END navigation menu and click on logo*************/
+    var hoverTrigger = 1;
+    $('.r-carousel-wrap').hover(
+        function () {
+            hoverTrigger = 0;
+            console.info('gallery ', hoverTrigger);
+        },
+        function () {
+            hoverTrigger = 1;
+            console.info('not gallery ',hoverTrigger);
+        }
+    );
 
-/***********Paggination page*************/
+    /***********Paggination page*************/
     $('.arrow-up').on("click", function () {
         var pageOld = $('body').find('.nav_item.active').attr('data-page-num');
         scrollUp(pageOld);
@@ -83,23 +99,33 @@ $(function(){
 
     $('body').bind('mousewheel', function(e){
         var pageOld = $('body').find('.nav_item.active').attr('data-page-num');
-        if((e.originalEvent.wheelDelta < 0) && pageOld <= 3) {
-            scrollDown(pageOld);
-        };
-        if((e.originalEvent.wheelDelta > 0) && pageOld >= 2)  {
-            scrollUp(pageOld);
-        };
-
-        //prevent page fom scrolling
-        return false;
+        console.info(pageOld,projectId);
+        if(hoverTrigger == 1){
+            if((e.originalEvent.wheelDelta < 0) && pageOld <= 3) {
+                scrollDown(pageOld);
+            };
+            if((e.originalEvent.wheelDelta > 0) && pageOld >= 2)  {
+                scrollUp(pageOld);
+            };
+            //prevent page fom scrolling
+            return false;
+        } else {
+            if((e.originalEvent.wheelDelta < 0) && pageOld <= 3) {
+                $('#project-carousel-' + projectId).find('.owl-next').trigger('click');
+            };
+            if((e.originalEvent.wheelDelta > 0) && pageOld >= 2)  {
+                $('#project-carousel-' + projectId).find('.owl-prev').trigger('click');
+            };
+            //prevent page fom scrolling
+            return false;
+        }
     });
-
 /***********END paggination arrow*************/
 
 /***********Show gallery*************/
     $('.project-item').on('click', function () {
         $('.project-item').hide();
-        var projectId = $(this).attr('data-id');
+        projectId = $(this).attr('data-id');
         $('.content').find('#project-carousel-' + projectId).css({'opacity':1,'z-index':1});
         $('.arrow-back, .arrow-gallery').show();
         $('.arrow').hide();
@@ -109,6 +135,20 @@ $(function(){
         $('.arrow-gallery-up').on('click', function () {
             $('#project-carousel-' + projectId).find('.owl-prev').trigger('click');
         });
+/*
+        $('body').bind('mousewheel', function(e){
+            if((e.originalEvent.wheelDelta < 0)) {
+                $('#project-carousel-' + projectId).find('.owl-prev').trigger('click');
+            };
+            if((e.originalEvent.wheelDelta > 0))  {
+                $('#project-carousel-' + projectId).find('.owl-next').trigger('click');
+            };
+
+            //prevent page fom scrolling
+            return false;
+        });
+*/
+
     });
 
     $('.arrow-back').on('click', function () {
