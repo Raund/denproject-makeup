@@ -1,6 +1,7 @@
 $(function(){
 
     var marTop = +($('.content').css('height').slice(0,-2));
+    var hoverTrigger = 1;
     var projectId;
 
     function scrollUp(pageOld) {
@@ -59,7 +60,7 @@ $(function(){
         };
     };
 
-        /***********height screen*************/
+/***********height screen*************/
     $('.header, .footer').css({height : ($( window ).height() - marTop)/2 + 'px'});
     $('.content').css({'top' : ($( window ).height() - marTop)/2 + 'px'});
     $('.sidebar_right_wrap').css({'bottom' : ($( window ).height() - marTop)/2 + 'px'});
@@ -98,7 +99,6 @@ $(function(){
     });
 /***********END navigation menu and click on logo*************/
 
-    var hoverTrigger = 1;
     $('.r-carousel-wrap').hover(
         function () {
             hoverTrigger = 0;
@@ -156,8 +156,12 @@ $(function(){
         if($('#project-carousel-' + projectId + ' .owl-item:first-child').hasClass('active')){
             $('.arrow-gallery-up').hide();
         };
-        $('.arrow-gallery-down').on('click', scrollGalleryDown());
-        $('.arrow-gallery-up').on('click', scrollGalleryUp());
+        $('.arrow-gallery-down').on('click', function () {
+            scrollGalleryDown();
+        });
+        $('.arrow-gallery-up').on('click', function () {
+            scrollGalleryUp();
+        });
     });
 
     $('.arrow-back').on('click', function () {
