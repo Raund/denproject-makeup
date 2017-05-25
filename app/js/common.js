@@ -4,40 +4,42 @@ $(function(){
     var hoverTrigger = 1;
     var projectId;
 
-    function scrollUp(pageOld) {
-        var pageUpNum = +pageOld - 1;
-        $('[data-page-num]').removeClass('active');
-        if(pageUpNum == 1){
-            $('.arrow-up').css({
-                'display': 'none'
-            });
+/***********Trigger for scroll page or item in gallery by mouse wheel*************/
+    $('.r-carousel-wrap').hover(
+        function () {
+            hoverTrigger = 0;
+        },
+        function () {
+            hoverTrigger = 1;
+        }
+    );
+/***********END trigger for scroll page or item in gallery by mouse wheel*************/
+
+/***********Function for scroll page*************/
+    function scrollPage(pageOld,UpOrDown) {
+        if(UpOrDown == 'Up'){
+            var pageNum = +pageOld - 1;
+            if(pageNum == 1){
+                $('.arrow-up').css({'display': 'none'});
+            };
+            $('.arrow-down').css({'display':'block'});
         };
-        $('.arrow-down').css({
-            'display':'block'
-        });
-        $('body').find('[data-page-num=' + pageUpNum + ']').addClass('active');
-        $('.content-wrap').css({'margin-top' : - marTop * (pageUpNum - 1)});
+        if(UpOrDown == 'Down'){
+            var pageNum = +pageOld + 1;
+            if(pageNum == 4){
+                $('.arrow-down').css({'display': 'none'});
+            };
+            $('.arrow-up').css({'display':'block'});
+        };
+        $('[data-page-num]').removeClass('active');
+        $('body').find('[data-page-num=' + pageNum + ']').addClass('active');
+        $('.content-wrap').css({'margin-top' : - marTop * (pageNum - 1)});
         $('.r-carousel-wrap').css({'opacity':0,'z-index':-1});
         $('.project-item').show();
     };
+/***********END function for scroll page*************/
 
-    function scrollDown(pageOld) {
-        var pageDownNum = +pageOld + 1;
-        if(pageDownNum == 4){
-            $('.arrow-down').css({
-                'display': 'none'
-            });
-        };
-        $('.arrow-up').css({
-            'display':'block'
-        });
-        $('[data-page-num]').removeClass('active');
-        $('body').find('[data-page-num=' + pageDownNum + ']').addClass('active');
-        $('.content-wrap').css({'margin-top' : - marTop * (pageDownNum - 1)});
-        $('.r-carousel-wrap').css({'opacity':0,'z-index':-1});
-        $('.project-item').show();
-    };
-
+/***********Function for scroll-down gallery item*************/
     function scrollGalleryDown() {
         $('#project-carousel-' + projectId).find('.owl-next').trigger('click');
         if($('#project-carousel-' + projectId + ' .owl-item:last-child').hasClass('active')){
@@ -49,7 +51,9 @@ $(function(){
             $('.arrow-gallery-up').show();
         };
     };
+/***********END function for scroll-down gallery item*************/
 
+/***********Function for scroll-up gallery item*************/
     function scrollGalleryUp() {
         $('#project-carousel-' + projectId).find('.owl-prev').trigger('click');
         if($('#project-carousel-' + projectId + ' .owl-item:first-child').hasClass('active')){
@@ -59,6 +63,7 @@ $(function(){
             $('.arrow-gallery-down').show();
         };
     };
+/***********END function for scroll-up gallery item*************/
 
 /***********height screen*************/
     $('.header, .footer').css({height : ($( window ).height() - marTop)/2 + 'px'});
@@ -76,22 +81,14 @@ $(function(){
         $('[data-page-num]').removeClass('active');
         var pageNum = $(this).attr('data-page-num');
         if(pageNum == 1){
-            $('.arrow-up').css({
-                'display': 'none'
-            });
+            $('.arrow-up').css({'display': 'none'});
         } else {
-            $('.arrow-up').css({
-                'display': 'block'
-            });
+            $('.arrow-up').css({'display': 'block'});
         };
         if(pageNum == 4){
-            $('.arrow-down').css({
-                'display': 'none'
-            });
+            $('.arrow-down').css({'display': 'none'});
         } else {
-            $('.arrow-down').css({
-                'display': 'block'
-            });
+            $('.arrow-down').css({'display': 'block'});
         };
         $('body').find('[data-page-num=' + pageNum + ']').addClass('active');
         $('.content-wrap').css({'margin-top' : - marTop * (pageNum - 1)});
@@ -99,52 +96,41 @@ $(function(){
     });
 /***********END navigation menu and click on logo*************/
 
-    $('.r-carousel-wrap').hover(
-        function () {
-            hoverTrigger = 0;
-            console.info('gallery ', hoverTrigger);
-        },
-        function () {
-            hoverTrigger = 1;
-            console.info('not gallery ',hoverTrigger);
-        }
-    );
-
 /***********Paggination page*************/
     $('.arrow-up').on("click", function () {
         var pageOld = $('body').find('.nav_item.active').attr('data-page-num');
-        scrollUp(pageOld);
+        scrollPage(pageOld, 'Up');
     });
 
     $('.arrow-down').on("click", function () {
         var pageOld = $('body').find('.nav_item.active').attr('data-page-num');
-        scrollDown(pageOld);
+        scrollPage(pageOld, 'Down');
     });
 
+    /***********Paggination by mouse wheel*************/
     $('body').bind('mousewheel', function(e){
         var pageOld = $('body').find('.nav_item.active').attr('data-page-num');
-        console.info(pageOld,projectId);
-        if(hoverTrigger == 1){
+        if(hoverTrigger == 1){  //scroll page
             if((e.originalEvent.wheelDelta < 0) && pageOld <= 3) {
-                scrollDown(pageOld);
+                scrollPage(pageOld, 'Down');
             };
             if((e.originalEvent.wheelDelta > 0) && pageOld >= 2)  {
-                scrollUp(pageOld);
+                scrollPage(pageOld, 'Up');
             };
-            //prevent page fom scrolling
             return false;
-        } else {
+        } else {    //scroll gallery item
             if((e.originalEvent.wheelDelta < 0) && pageOld <= 3) {
                 scrollGalleryDown();
             };
             if((e.originalEvent.wheelDelta > 0) && pageOld >= 2)  {
                 scrollGalleryUp();
             };
-            //prevent page fom scrolling
             return false;
         }
     });
-/***********END paggination arrow*************/
+    /***********END paggination by mouse wheel*************/
+
+/***********END paggination*************/
 
 /***********Show gallery*************/
     $('.project-item').on('click', function () {
