@@ -49,7 +49,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.85);
   color: #262626;
   font-family: "Myriad Pro", sans-serif;
   font-size: 15px;
@@ -185,13 +185,22 @@ a {
   .arrow li:first-child {
     margin-bottom: 70px; }
   .arrow-up {
-    top: 0; }
+    top: 0;
+    background: url("../img/frontend/arrow_up.png") right center no-repeat; }
   .arrow-down {
-    bottom: 0; }
+    bottom: 0;
+    background: url("../img/frontend/arrow_down.png") right center no-repeat; }
   .arrow-back {
     display: none;
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    background: url("../img/frontend/arrow_right.png") right center no-repeat;
     margin-bottom: 70px;
     cursor: pointer; }
+    .arrow-back_wrap {
+      width: 100%; }
   .arrow-back.active {
     display: block; }
 
@@ -209,9 +218,11 @@ a {
   .arrow-gallery li:first-child {
     margin-bottom: 70px; }
   .arrow-gallery-up {
-    top: 0; }
+    top: 0;
+    background: url("../img/frontend/arrow_up.png") right center no-repeat; }
   .arrow-gallery-down {
-    bottom: 0; }
+    bottom: 0;
+    background: url("../img/frontend/arrow_down.png") right center no-repeat; }
   .arrow-gallery.active {
     display: block; }
 
@@ -235,6 +246,12 @@ a {
       opacity: 1;
       -webkit-transition: all .5s ease;
       transition: all .5s ease; }
+
+.minus {
+  display: inline-block;
+  width: 12px;
+  height: 15px;
+  background: url("../img/frontend/arrow.png") right center no-repeat; }
 
 .page-num {
   display: none;

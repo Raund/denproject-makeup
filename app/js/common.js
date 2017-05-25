@@ -1,14 +1,35 @@
 $(function(){
 
-/*
-    if($( window ).width() <= 1440){
-        $('.header, .footer').css({height : ($( window ).height() - 630)/2 + 'px'});
-        $('.content').css({'top' : ($( window ).height() - 630)/2 + 'px'});
-        $('.sidebar_right_wrap').css({'bottom' : ($( window ).height() - 630)/2 + 'px'});
-        $('nav').css({width : $( window ).height() + 'px'});
-    }
-*/
     var marTop = +($('.content').css('height').slice(0,-2));
+
+    function scrollUp(pageOld) {
+        var pageUpNum = +pageOld - 1;
+        $('[data-page-num]').removeClass('active');
+        if(pageUpNum == 1){
+            $('.arrow-up').css({
+                'display': 'none'
+            });
+        };
+        $('.arrow-down').css({
+            'display':'block'
+        });
+        $('body').find('[data-page-num=' + pageUpNum + ']').addClass('active');
+        $('.content-wrap').css({'margin-top' : - marTop * (pageUpNum - 1)});
+    };
+    function scrollDown(pageOld) {
+        var pageDownNum = +pageOld + 1;
+        if(pageDownNum == 4){
+            $('.arrow-down').css({
+                'display': 'none'
+            });
+        };
+        $('.arrow-up').css({
+            'display':'block'
+        });
+        $('[data-page-num]').removeClass('active');
+        $('body').find('[data-page-num=' + pageDownNum + ']').addClass('active');
+        $('.content-wrap').css({'margin-top' : - marTop * (pageDownNum - 1)});
+    };
 
     /***********height screen*************/
     $('.header, .footer').css({height : ($( window ).height() - marTop)/2 + 'px'});
@@ -49,38 +70,30 @@ $(function(){
     });
 /***********END navigation menu and click on logo*************/
 
-/***********Paggination arrow*************/
+/***********Paggination page*************/
     $('.arrow-up').on("click", function () {
-        var pageUpNumOld = $('body').find('.nav_item.active').attr('data-page-num');
-        var pageUpNum = +pageUpNumOld - 1;
-        $('[data-page-num]').removeClass('active');
-        if(pageUpNum == 1){
-            $('.arrow-up').css({
-                'display': 'none'
-            });
-        };
-        $('.arrow-down').css({
-            'display':'block'
-        });
-        $('body').find('[data-page-num=' + pageUpNum + ']').addClass('active');
-        $('.content-wrap').css({'margin-top' : - marTop * (pageUpNum - 1)});
+        var pageOld = $('body').find('.nav_item.active').attr('data-page-num');
+        scrollUp(pageOld);
     });
 
     $('.arrow-down').on("click", function () {
-        var pageDownNumOld = $('body').find('.nav_item.active').attr('data-page-num');
-        var pageDownNum = +pageDownNumOld + 1;
-        if(pageDownNum == 4){
-            $('.arrow-down').css({
-                'display': 'none'
-            });
-        };
-        $('.arrow-up').css({
-            'display':'block'
-        });
-        $('[data-page-num]').removeClass('active');
-        $('body').find('[data-page-num=' + pageDownNum + ']').addClass('active');
-        $('.content-wrap').css({'margin-top' : - marTop * (pageDownNum - 1)});
+        var pageOld = $('body').find('.nav_item.active').attr('data-page-num');
+        scrollDown(pageOld);
     });
+
+    $('body').bind('mousewheel', function(e){
+        var pageOld = $('body').find('.nav_item.active').attr('data-page-num');
+        if((e.originalEvent.wheelDelta < 0) && pageOld <= 3) {
+            scrollDown(pageOld);
+        };
+        if((e.originalEvent.wheelDelta > 0) && pageOld >= 2)  {
+            scrollUp(pageOld);
+        };
+
+        //prevent page fom scrolling
+        return false;
+    });
+
 /***********END paggination arrow*************/
 
 /***********Show gallery*************/

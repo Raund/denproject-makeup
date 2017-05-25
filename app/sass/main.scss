@@ -48,7 +48,7 @@ body{
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.85);
   color: #262626;
   font-family: "Myriad Pro", sans-serif;
   font-size: 15px;
@@ -192,14 +192,24 @@ a{
   }
   &-up{
     top: 0;
+    background: url("../img/frontend/arrow_up.png") right center no-repeat;
   }
   &-down{
     bottom: 0;
+    background: url("../img/frontend/arrow_down.png") right center no-repeat;
   }
   &-back{
     display: none;
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    background: url("../img/frontend/arrow_right.png") right center no-repeat;
     margin-bottom: 70px;
     cursor: pointer;
+    &_wrap{
+      width: 100%;
+    }
   }
   &-back.active{
     display: block;
@@ -223,9 +233,11 @@ a{
   }
   &-up{
     top: 0;
+    background: url("../img/frontend/arrow_up.png") right center no-repeat;
   }
   &-down{
     bottom: 0;
+    background: url("../img/frontend/arrow_down.png") right center no-repeat;
   }
   &.active{
     display: block;
@@ -255,6 +267,13 @@ a{
       transition: all .5s ease;
     }
   }
+}
+.minus{
+  display: inline-block;
+  width: 12px;
+  height: 15px;
+  background: url("../img/frontend/arrow.png") right center no-repeat;
+
 }
 .page-num{
   display: none;
