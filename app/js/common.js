@@ -68,6 +68,8 @@ $(function(){
 /***********END function for scroll-up gallery item*************/
 
 /***********height screen*************/
+    $('.mob-block_contact').css({height : $( window ).height() + 'px'});
+    $('.mob-block_about').css({height : ($( window ).height() - $('.mob-header').css('height').slice(0,-2)) + 'px'});
     $('.header, .footer').css({height : ($( window ).height() - marTop)/2 + 'px'});
     $('.content').css({'top' : ($( window ).height() - marTop)/2 + 'px'});
     $('.sidebar_right_wrap').css({'bottom' : ($( window ).height() - marTop)/2 + 'px'});
@@ -174,5 +176,25 @@ $(function(){
         animateIn: "fadeIn"
     });
 /***********END owl-carousel*************/
+    
+/***********Adaptive menu*************/
+    $('.button-menu').click(function(){
+        $(this).toggleClass('active');
+        $('.mob-nav').toggleClass('active');
+        $('.button-menu .icon').toggleClass('menu-i').toggleClass('close');
+    });
+/***********END adaptive menu*************/
+
+/**********scrollTo**************/
+    $(".mob-nav li a").click(function(e) {
+        var scrollId = $(this).attr('data-scroll-id');
+        $('html, body').animate({
+            scrollTop: $("#" + scrollId).offset().top
+        }, 1000);
+        e.preventDefault();
+    });
+/**********END scrollTo**************/
+
+
 
 });
