@@ -9,6 +9,7 @@ html{
   height: 100%;
   background: url("../img/frontend/body_bg.jpg") center no-repeat;
   background-size: cover;
+  background-position: left bottom;
 }
 a{
   text-decoration: none;
@@ -48,7 +49,7 @@ body{
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-color: rgba(255,255,255,0.85);
+  background-color: rgba(255,255,255,0.75);
   color: #262626;
   font-family: "Myriad Pro", sans-serif;
   font-size: 15px;
@@ -100,6 +101,10 @@ a{
   padding: 0;
   &:hover, &.active{
     background: inherit;
+  }
+  img{
+    width: 90px;
+    height: 90px;
   }
 }
 .content{

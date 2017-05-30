@@ -5,6 +5,7 @@ $(function(){
     var projectId;
 
 /***********Trigger for scroll page or item in gallery by mouse wheel*************/
+/*
     $('.r-carousel-wrap').hover(
         function () {
             hoverTrigger = 0;
@@ -13,6 +14,7 @@ $(function(){
             hoverTrigger = 1;
         }
     );
+*/
 /***********END trigger for scroll page or item in gallery by mouse wheel*************/
 
 /***********Function for scroll page*************/
@@ -74,6 +76,7 @@ $(function(){
 
 /***********Navigation menu and click on logo*************/
     $('.nav a, .logo').on("click", function (e) {
+        hoverTrigger = 1;
         $('.project-item').show();
         $('.r-carousel-wrap').css({'opacity':0,'z-index':-1});  // hide all gallery
         $('.arrow').show();                                     //show arrow for page pagination
@@ -134,6 +137,7 @@ $(function(){
 
 /***********Show gallery*************/
     $('.project-item').on('click', function () {
+        hoverTrigger = 0;
         $('.project-item').hide();
         projectId = $(this).attr('data-id');
         $('.content').find('#project-carousel-' + projectId).css({'opacity':1,'z-index':1});
@@ -151,6 +155,7 @@ $(function(){
     });
 
     $('.arrow-back').on('click', function () {
+        hoverTrigger = 1;
         $('.project-item').show();
         $('.r-carousel-wrap').css({'opacity':0,'z-index':-1});
         $(this).hide();

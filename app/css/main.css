@@ -8,7 +8,8 @@
 html {
   height: 100%;
   background: url("../img/frontend/body_bg.jpg") center no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  background-position: left bottom; }
 
 a {
   text-decoration: none;
@@ -49,7 +50,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.75);
   color: #262626;
   font-family: "Myriad Pro", sans-serif;
   font-size: 15px;
@@ -101,6 +102,9 @@ a {
   padding: 0; }
   .logo:hover, .logo.active {
     background: inherit; }
+  .logo img {
+    width: 90px;
+    height: 90px; }
 
 .content {
   position: fixed;
@@ -359,26 +363,34 @@ a {
 
 /*==========  Desktop First Method  ==========*/
 /* Large Devices, Wide Screens */
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1200px), only screen and (max-height: 900px) {
   .content {
-    height: 450px; }
+    width: 600px;
+    height: 450px;
+    margin-left: -300px; }
+  .wrapper {
+    width: 600px; }
   .content-wrap {
     height: 100%;
     margin-top: -450px; }
   .sidebar {
-    width: -webkit-calc((100% - 840px)/2);
-    width: calc((100% - 840px)/2); }
-  .r-carousel-wrap .gallery-item img {
-    max-height: 450px; }
+    width: -webkit-calc((100% - 600px)/2);
+    width: calc((100% - 600px)/2); }
+  .nav {
+    right: 35px; }
+  .r-carousel-wrap .gallery-item {
+    width: 600px; }
+    .r-carousel-wrap .gallery-item img {
+      max-height: 450px; }
   .soc {
     margin-top: 20px;
     margin-left: 50px; }
   .lang {
-    bottom: 20px; }
+    bottom: 15px; }
     .lang_item {
       margin-bottom: 10px; }
   .logo {
-    bottom: 20px; }
+    bottom: 15px; }
     .logo img {
       width: 60px;
       height: 60px; }
@@ -388,7 +400,16 @@ a {
   .about-info {
     width: 450px; }
   .project-item {
-    height: 214px; }
+    height: 142px; }
+    .project-item_name {
+      width: 33%;
+      height: 70px;
+      margin-top: 35px; }
+      .project-item_name-text {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 12px; }
   .pagination li {
     margin-top: 5px; }
   .arrow {

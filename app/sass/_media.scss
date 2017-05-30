@@ -2,21 +2,29 @@
 
 /*==========  Desktop First Method  ==========*/
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1440px){
+@media only screen and (max-width : 1200px),
+only screen and (max-height : 900px){
   .content{
+    width: 600px;
     height: 450px;
+    margin-left: -300px;
  }
   .wrapper{
+    width: 600px;
   }
   .content-wrap{
     height: 100%;
     margin-top: -450px;
   }
   .sidebar{
-    width: calc((100% - 840px)/2);
+    width: calc((100% - 600px)/2);
+  }
+  .nav {
+    right: 35px;
   }
   .r-carousel-wrap{
     .gallery-item{
+      width: 600px;
       img{
         max-height: 450px;
       }
@@ -27,13 +35,13 @@
     margin-left: 50px;
   }
   .lang{
-    bottom: 20px;
+    bottom: 15px;
     &_item{
       margin-bottom: 10px;
     }
   }
   .logo{
-    bottom: 20px;
+    bottom: 15px;
     img{
       width: 60px;
       height: 60px;
@@ -47,9 +55,21 @@
     width: 450px;
   }
   .project-item {
-    height: 214px;
+    height: 142px;
+    &_name{
+      width: 33%;
+      height: 70px;
+      margin-top: 35px;
+      &-text{
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 12px;
+      }
+    }
+
   }
-    .pagination{
+  .pagination{
     li{
       margin-top: 5px;
     }
