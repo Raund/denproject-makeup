@@ -178,8 +178,8 @@ a {
 
 .sidebar_right_wrap {
   position: absolute;
-  width: 50px;
-  padding: 0 0 10px 10px;
+  width: 65px;
+  padding: 0 0 10px 25px;
   text-align: right; }
 
 .arrow {
@@ -384,6 +384,9 @@ a {
   .sidebar {
     width: -webkit-calc((100% - 600px)/2);
     width: calc((100% - 600px)/2); }
+  .sidebar_right_wrap {
+    width: 55px;
+    padding: 0 0 10px 15px; }
   .nav {
     right: 35px;
     height: 360px;
@@ -394,11 +397,13 @@ a {
       width: 12px;
       height: auto; }
   .arrow-up,
+  .arrow-gallery-up {
+    background: url("../img/frontend/arrow_up_min.png") right center no-repeat; }
   .arrow-down,
-  .arrow-gallery-up,
   .arrow-gallery-down {
-    background-size: 33%; }
+    background: url("../img/frontend/arrow_down_min.png") right center no-repeat; }
   .arrow-back {
+    background: url("../img/frontend/arrow_right_min.png") right center no-repeat;
     width: 17%; }
   .minus {
     height: 12px;
@@ -422,8 +427,13 @@ a {
       width: 60px;
       height: 60px; }
   .block_contact {
-    background-size: 100%;
+    background: url("../img/frontend/contact_bg_min.png") no-repeat;
+    background-size: 600px auto;
     background-position: right bottom; }
+  .block_about {
+    background: url("../img/frontend/about_bg_min.png") no-repeat;
+    background-size: 600px auto;
+    background-position: left top; }
   .about-info {
     width: 450px; }
   .project-item {
@@ -531,6 +541,7 @@ a {
       .mob-project-item:nth-child(4n) {
         margin-right: 0; }
       .mob-project-item_name {
+        display: none;
         position: relative;
         width: 50%;
         height: 120px;

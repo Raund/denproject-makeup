@@ -22,6 +22,10 @@ only screen and (max-height : 900px){
   .sidebar{
     width: calc((100% - 600px)/2);
   }
+  .sidebar_right_wrap{
+    width: 55px;
+    padding: 0 0 10px 15px;
+  }
   .nav {
     right: 35px;
     height: 360px;
@@ -35,12 +39,15 @@ only screen and (max-height : 900px){
     }
   }
   .arrow-up,
+  .arrow-gallery-up{
+    background: url('../img/frontend/arrow_up_min.png') right center no-repeat;
+  }
   .arrow-down,
-  .arrow-gallery-up,
   .arrow-gallery-down{
-    background-size: 33%;
+    background: url('../img/frontend/arrow_down_min.png') right center no-repeat;
   }
   .arrow-back{
+    background: url('../img/frontend/arrow_right_min.png') right center no-repeat;
     width: 17%;
   }
   .minus{
@@ -76,8 +83,14 @@ only screen and (max-height : 900px){
     }
   }
   .block_contact{
-    background-size: 100%;
+    background: url("../img/frontend/contact_bg_min.png") no-repeat;
+    background-size: 600px auto;
     background-position: right bottom;
+  }
+  .block_about{
+    background: url("../img/frontend/about_bg_min.png") no-repeat;
+    background-size: 600px auto;
+    background-position: left top;
   }
   .about-info{
     width: 450px;
@@ -222,6 +235,7 @@ only screen and (max-height : 600px){
         margin-right: 0;
       }
       &_name{
+        display: none;
         position: relative;
         width: 50%;
         height: 120px;
