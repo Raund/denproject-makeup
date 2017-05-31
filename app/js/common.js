@@ -1,5 +1,7 @@
 $(function(){
 
+    var windowHeight = $( window ).height();
+    var windowWidth = $( window ).width();
     var marTop = +($('.content').css('height').slice(0,-2));
     var hoverTrigger = 1;
     var projectId;
@@ -68,12 +70,12 @@ $(function(){
 /***********END function for scroll-up gallery item*************/
 
 /***********height screen*************/
-    $('.mob-block_contact').css({height : $( window ).height() + 'px'});
-    $('.mob-block_about').css({height : ($( window ).height() - $('.mob-header').css('height').slice(0,-2)) + 'px'});
-    $('.header, .footer').css({height : ($( window ).height() - marTop)/2 + 'px'});
-    $('.content').css({'top' : ($( window ).height() - marTop)/2 + 'px'});
-    $('.sidebar_right_wrap').css({'bottom' : ($( window ).height() - marTop)/2 + 'px'});
-    $('nav').css({width : $( window ).height() + 'px'});
+    $('.mob-block_contact').css({height : windowHeight + 'px'});
+    $('.mob-block_about').css({height : (windowHeight - $('.mob-header').css('height').slice(0,-2)) + 'px'});
+    $('.header, .footer').css({height : (windowHeight - marTop)/2 + 'px'});
+    $('.content').css({'top' : (windowHeight - marTop)/2 + 'px'});
+    $('.sidebar_right_wrap').css({'bottom' : (windowHeight - marTop)/2 + 'px'});
+    $('nav').css({width : windowHeight + 'px'});
 /***********END height screen*************/
 
 /***********Navigation menu and click on logo*************/
@@ -166,17 +168,17 @@ $(function(){
     });
 /***********END show gallery*************/
 
-/***********Owl-carousel*************/
-    $('.owl-carousel').owlCarousel({
-        items:1,
-        singleItem: true,
-        nav: true,
-        navText: "",
-        animateOut: "fadeOut",
-        animateIn: "fadeIn"
+/***********Show gallery on mobile*************/
+    $('.mob-project-item').on('click', function () {
+        projectId = $(this).attr('data-id');
+        $('body').find('#mob-project-carousel-' + projectId).toggleClass('active');
     });
-/***********END owl-carousel*************/
-    
+
+    $('.mob-close-gallery').on('click', function () {
+        $(this).parent().toggleClass('active');
+    });
+/***********END show gallery on mobile*************/
+
 /***********Adaptive menu*************/
     $('.button-menu').click(function(){
         $(this).toggleClass('active');
@@ -194,7 +196,28 @@ $(function(){
         e.preventDefault();
     });
 /**********END scrollTo**************/
+    
+/**********Center alignment img in mobile gallery**************/
+    $('img').load(function () {
+        $('.mob-gallery-item img').each(function () {
+            var imgHeight = $(this).height();
+            var imgMar = (windowHeight - imgHeight)/2;
+            $(this).css({'margin-top': imgMar + 'px'});
+        });
+    });
+    $('.mob-gallery-item').css({'height': windowHeight + 'px','width': windowWidth + 'px'});
+    $('.mob-gallery-item img').css({'max-height': windowHeight + 'px','max-width': windowWidth + 'px'});
+/**********END center alignment img in mobile gallery**************/
 
-
+/***********Owl-carousel*************/
+    $('.owl-carousel').owlCarousel({
+        items:1,
+        singleItem: true,
+        nav: true,
+        navText: "",
+        animateOut: "fadeOut",
+        animateIn: "fadeIn"
+    });
+/***********END owl-carousel*************/
 
 });
