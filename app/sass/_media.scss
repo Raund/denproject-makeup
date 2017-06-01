@@ -144,7 +144,6 @@ only screen and (max-height : 600px){
     height:initial;
   }
   body{
-    padding-top: 25px;
     background-color: #fff;
     font-size: 15px;
   }
@@ -153,8 +152,12 @@ only screen and (max-height : 600px){
   }
   .mob{
     display: block;
+    &-about-page{
+      background: url("../img/frontend/content_bg.jpg") center repeat;
+      background-size:contain;
+    }
     &-header{
-      padding: 20px;
+      padding: 50px 20px 20px 20px;
       img{
         float: right;
         width: 70px;
@@ -180,14 +183,9 @@ only screen and (max-height : 600px){
     &-block_about{
       min-height: 300px;
       display: table;
-      background: url("../img/frontend/content_bg.jpg") center repeat;
-      background-size:contain;
     }
     &-block_contact{
       display: table;
-      margin-top: 30px;
-      background: url("../img/frontend/content_bg.jpg") center repeat;
-      background-size:contain;
     }
     &-about_desc{
       display: table-cell;
@@ -218,9 +216,11 @@ only screen and (max-height : 600px){
         text-align: center;
       }
     }
-    &-block_project,
-    &-block_subject{
-      padding-top: 130px;
+    &-project-header,
+    &-subject-header{
+      position: static;
+      font-size: 50px;
+      text-align: left;
     }
     &-project-item{
       display: table;
@@ -410,11 +410,6 @@ only screen and (max-height : 600px){
     &-about{
       top: 10px;
     }
-  }
-  .mob-block_project,
-  .mob-block_subject{
-    padding-top: 130px;
-    padding-bottom: 0;
   }
 }
 

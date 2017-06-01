@@ -468,15 +468,17 @@ a {
   html {
     height: initial; }
   body {
-    padding-top: 25px;
     background-color: #fff;
     font-size: 15px; }
   .normal {
     display: none; }
   .mob {
     display: block; }
+    .mob-about-page {
+      background: url("../img/frontend/content_bg.jpg") center repeat;
+      background-size: contain; }
     .mob-header {
-      padding: 20px; }
+      padding: 50px 20px 20px 20px; }
       .mob-header img {
         float: right;
         width: 70px;
@@ -495,14 +497,9 @@ a {
       padding: 20px; }
     .mob-block_about {
       min-height: 300px;
-      display: table;
-      background: url("../img/frontend/content_bg.jpg") center repeat;
-      background-size: contain; }
+      display: table; }
     .mob-block_contact {
-      display: table;
-      margin-top: 30px;
-      background: url("../img/frontend/content_bg.jpg") center repeat;
-      background-size: contain; }
+      display: table; }
     .mob-about_desc {
       display: table-cell;
       vertical-align: middle;
@@ -527,8 +524,10 @@ a {
         float: left;
         width: 50%;
         text-align: center; }
-    .mob-block_project, .mob-block_subject {
-      padding-top: 130px; }
+    .mob-project-header, .mob-subject-header {
+      position: static;
+      font-size: 50px;
+      text-align: left; }
     .mob-project-item {
       display: table;
       float: left;
@@ -692,11 +691,7 @@ a {
   .mob-block_header {
     top: 40px; }
     .mob-block_header-about {
-      top: 10px; }
-  .mob-block_project,
-  .mob-block_subject {
-    padding-top: 130px;
-    padding-bottom: 0; } }
+      top: 10px; } }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 480px) {
