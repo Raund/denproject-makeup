@@ -86,6 +86,7 @@ $(function(){
         $('.r-carousel-wrap').css({'opacity':0,'z-index':-1});  // hide all gallery
         $('.arrow').show();                                     //show arrow for page pagination
         $('.arrow-gallery').hide();                             //hide arrow for img pagination in gallery
+        $('.arrow-gallery-up, .arrow-gallery-down').show();
         $('[data-page-num]').removeClass('active');
         var pageNum = $(this).attr('data-page-num');
         if(pageNum == 1){
@@ -151,12 +152,14 @@ $(function(){
         if($('#project-carousel-' + projectId + ' .owl-item:first-child').hasClass('active')){
             $('.arrow-gallery-up').hide();
         };
-        $('.arrow-gallery-down').on('click', function () {
-            scrollGalleryDown();
-        });
-        $('.arrow-gallery-up').on('click', function () {
-            scrollGalleryUp();
-        });
+    });
+
+    $('.arrow-gallery-down').on('click', function () {
+        scrollGalleryDown();
+    });
+
+    $('.arrow-gallery-up').on('click', function () {
+        scrollGalleryUp();
     });
 
     $('.arrow-back').on('click', function () {
@@ -166,6 +169,7 @@ $(function(){
         $(this).hide();
         $('.arrow').show();
         $('.arrow-gallery').hide();
+        $('.arrow-gallery-up, .arrow-gallery-down').show();
     });
 /***********END show gallery*************/
 
