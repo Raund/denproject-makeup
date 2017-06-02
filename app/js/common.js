@@ -8,6 +8,31 @@ $(function(){
     var hoverTrigger = 1;
     var projectId;
 
+/**********Center alignment img in mobile gallery**************/
+    function imgGallPos(){
+        $('.mob-gallery-item > img').each(function () {
+            var imgHeight = $(this).height();
+            var imgMar = (windowHeight - imgHeight)/2;
+            if(imgMar < 0) imgMar = 0;
+            console.info("windowHeight >>>" + windowHeight);
+            console.info("height img >>>" + imgHeight);
+            console.info("otstup >>>" + imgMar);
+            $('.mob-gallery-item').css({'height': windowHeight + 'px','width': windowWidth + 'px'});
+            $(this).css({'max-height': windowHeight + 'px','max-width': windowWidth + 'px'});
+            $(this).css({'margin-top': imgMar + 'px'});
+        });
+    };
+    $(window).load(function () {
+        imgGallPos();
+    });
+    $(window).resize(function () {
+        windowHeight = $( window ).height();
+        windowWidth = $( window ).width();
+        imgGallPos();
+    });
+
+/**********END center alignment img in mobile gallery**************/
+
 /***********Trigger for scroll page or item in gallery by mouse wheel*************/
 /*
     $('.r-carousel-wrap').hover(
@@ -76,7 +101,6 @@ $(function(){
     $('.header, .footer').css({height : (windowHeight - marTop)/2 + 'px'});
     $('.content').css({'top' : (windowHeight - marTop)/2 + 'px'});
     $('.sidebar_right_wrap').css({'bottom' : (windowHeight - marTop)/2 + 'px'});
-    $('nav').css({width : windowHeight + 'px'});
 /***********END height screen*************/
 
 /***********Navigation menu and click on logo*************/
@@ -179,7 +203,7 @@ $(function(){
         $('body').find('#mob-project-carousel-' + projectId).toggleClass('active');
     });
 
-    $('.mob-close-gallery').on('click', function () {
+    $('.mob-carousel-wrap .close').on('click', function () {
         $(this).parent().toggleClass('active');
     });
 /***********END show gallery on mobile*************/
@@ -204,20 +228,7 @@ $(function(){
     });
 */
 /**********END scrollTo**************/
-    
-/**********Center alignment img in mobile gallery**************/
-    $(window).load(function () {
-        $('.mob-gallery-item img').each(function () {
-            var imgHeight = $(this).height();
-            console.info(imgHeight);
-            var imgMar = (windowHeight - imgHeight)/2;
-            $(this).css({'margin-top': imgMar + 'px'});
-        });
-    });
-    $('.mob-gallery-item').css({'height': windowHeight + 'px','width': windowWidth + 'px'});
-    $('.mob-gallery-item img').css({'max-height': windowHeight + 'px','max-width': windowWidth + 'px'});
-/**********END center alignment img in mobile gallery**************/
-   
+
     if(windowHeight <= 900 ||  windowWidth <= 1200){
         $('.nav img').each(function () {
             var imgSrc = $(this).attr('src').slice(0,-4) + '_min.png';

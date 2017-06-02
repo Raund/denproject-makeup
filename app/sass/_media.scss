@@ -92,6 +92,10 @@ only screen and (max-height : 900px){
     background-size: 600px auto;
     background-position: left top;
   }
+  .block_project,
+  .block_subject{
+    background-size:41%;
+  }
   .about-info{
     width: 450px;
   }
@@ -138,6 +142,51 @@ only screen and (max-height : 900px){
 }
 
 /* Medium Devices, Desktops */
+@media only screen and (max-width : 992px),
+only screen and (max-height : 600px){
+  html{
+    background: #fff url("../img/frontend/body_bg_mob.jpg") center no-repeat;
+    background-size: cover;
+  }
+  body{
+    background: none;
+    position: relative;
+  }
+  .header, .footer{
+    position: absolute;
+    height: 85px !important;
+  }
+  .sidebar{
+    position: absolute;
+    width: 90px !important;
+  }
+  .content{
+    position: relative;
+    top: 85px !important;
+  }
+  .normal{
+    position: absolute;
+    top: 50%;
+    margin-top: -310px;
+    left: 50%;
+    margin-left: -390px;
+    width: 780px;
+    height: 620px;
+  }
+  .sidebar_right_wrap{
+    bottom: 85px !important;
+  }
+}
+@media only screen and (max-height : 560px){
+  .normal{
+    zoom: 0.83;
+  }
+  .content{
+    height: 452px;
+  }
+}
+/*
+!* Medium Devices, Desktops *!
 @media only screen and (max-width : 992px),
 only screen and (max-height : 600px){
   html{
@@ -231,7 +280,7 @@ only screen and (max-height : 600px){
       margin-bottom: 2%;
       background-size: cover;
       background-position: center;
-      &:nth-child(4n){
+      &:nth-child(3n){
         margin-right: 0;
       }
       &_name{
@@ -299,21 +348,19 @@ only screen and (max-height : 600px){
     }
     .mob-gallery-item{
       img{
-        width: initial;
-        height: initial;
+        width: inherit;
+        height: inherit;
         margin: 0 auto;
         vertical-align: middle;
       }
     }
   }
-  .mob-close-gallery{
+  .mob-carousel-wrap .close.icon{
+    margin: 0;
     position: absolute;
     top: 10px;
-    right: 10px;
+    left: 90%;
     z-index:9999;
-    .fa{
-      color: #000;
-    }
   }
   .close.icon:after {
     position: absolute;
@@ -403,7 +450,7 @@ only screen and (max-height : 600px){
     transition: all .5s ease; }
 
 }
-/* Small Devices, Tablets */
+!* Small Devices, Tablets *!
 @media only screen and (max-width : 768px){
   .mob-block_header{
     top: 40px;
@@ -413,14 +460,17 @@ only screen and (max-height : 600px){
   }
 }
 
-/* Extra Small Devices, Phones */
+!* Extra Small Devices, Phones *!
 @media only screen and (max-width : 480px){
   .mob-project-item{
     width: 47%;
     height: 150px;
-    margin-right: 0;
+    margin-right: 6%;
     margin-bottom: 6%;
     &:nth-child(2n){
+      margin-right: 0;
+    }
+    &:nth-child(2n+1){
       margin-right: 6%;
     }
   }
@@ -428,4 +478,4 @@ only screen and (max-height : 600px){
     height: 80px;
     margin-top: 40px;
   }
-}
+}*/
