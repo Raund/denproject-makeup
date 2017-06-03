@@ -97,7 +97,9 @@ $(function(){
 /***********END function for scroll-up gallery item*************/
 
 /***********height screen*************/
+/*
     $('.mob-block_about,.mob-block_contact').css({height : (windowHeight - $('.mob-header').css('height').slice(0,-2)) + 'px'});
+*/
     $('.header, .footer').css({height : (windowHeight - marTop)/2 + 'px'});
     $('.content').css({'top' : (windowHeight - marTop)/2 + 'px'});
     $('.sidebar_right_wrap').css({'bottom' : (windowHeight - marTop)/2 + 'px'});
